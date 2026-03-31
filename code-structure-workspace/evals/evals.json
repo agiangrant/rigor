@@ -1,0 +1,23 @@
+{
+  "skill_name": "code-structure",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need to add a payments feature to this Express API. It needs a route for creating payments (POST /payments) and listing payments by user (GET /payments?userId=...). Look at the existing project structure and add the necessary files.",
+      "expected_output": "Should scan existing structure, recognize the routes/services/models pattern, and create paymentRoutes.ts, paymentService.ts, payment.ts model, and paymentRoutes.test.ts following exact naming and organizational conventions. Should update routes/index.ts barrel. Should NOT create files in new directories or deviate from conventions. Should NOT need to surface options — this is a clear 'follow the pattern' case.",
+      "files": ["eval-1-established-structure/project/"]
+    },
+    {
+      "id": 2,
+      "prompt": "We need to add an audit logging system that tracks who did what and when across all features (auth, billing, notifications). Every service action should be logged. Where should this code live?",
+      "expected_output": "Should recognize this is ambiguous — audit logging touches all features and could live in multiple places: as a new feature (features/audit/), as a shared module (shared/audit/), as middleware, or as a cross-cutting concern. Should present at least 2 options with concrete paths and trade-offs. Should NOT just pick one and create files.",
+      "files": ["eval-2-ambiguous-placement/project/"]
+    },
+    {
+      "id": 3,
+      "prompt": "We want to add real-time collaboration to this task management app — users should see task updates live when someone else on their project modifies a task. This means we need WebSocket support. Add the necessary code for real-time task updates.",
+      "expected_output": "Should recognize this is a genuinely new subsystem (WebSockets) being added to an HTTP-only clean architecture app. Should surface the structural decision: where do WebSocket handlers live relative to the existing api/domain/infrastructure layers? Should present options (e.g., new top-level ws/ parallel to api/, or nested under api/, or a new realtime/ layer). Should NOT just create files without surfacing the decision.",
+      "files": ["eval-3-new-subsystem/project/"]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "rigor",
+  "version": "1.0.0",
+  "description": "Rigorous process. Your decisions. Enforces TDD, structured debugging, architecture decision surfacing, strict code review, and pattern-aware code writing across TypeScript, Go, Python, and Rust.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Rigor",
+    "tagline": "Rigorous process. Your decisions."
+  }
+}

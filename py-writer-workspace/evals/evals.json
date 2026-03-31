@@ -1,0 +1,23 @@
+{
+  "skill_name": "py:writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a ProjectService to this FastAPI app. Projects have a name, description, owner_id (references a user), and status (active/archived). Users can create, get by ID, list their projects, update, and archive. Write the service, schemas, route, and tests.",
+      "expected_output": "Should follow ALL established patterns: async service with Protocol-based repository, dataclass model, Pydantic schemas (request/response), custom exceptions (NotFoundError, ValidationError), FastAPI router with Depends, pytest with AsyncMock fixtures. Should NOT introduce sync code, different data models, or different test patterns.",
+      "files": ["eval-1-follow-patterns/project/"]
+    },
+    {
+      "id": 2,
+      "prompt": "The order creation endpoint is blocking for 3+ seconds because it sends emails, generates invoices, and notifies the warehouse synchronously. We need to move these to background processing. The project is a sync Flask app with Redis already in requirements.txt.",
+      "expected_output": "Should recognize this is a pattern decision — the project is sync Flask with no established background processing pattern. Should surface options: Celery (heavyweight, full featured), RQ (lightweight Redis-based, matches the sync Flask pattern), huey, or threading. Should note Redis is already a dependency which favors RQ/Celery. Should NOT just pick Celery and start writing. Should also surface whether to keep the app sync or introduce async.",
+      "files": ["eval-2-new-pattern/project/"]
+    },
+    {
+      "id": 3,
+      "prompt": "Add a Task model and API to this Django REST Framework project. Tasks have a title, description, status (todo/in_progress/done), assigned_to (ForeignKey to User), project (ForeignKey to Project), and timestamps. Write the model, serializer, views, and tests.",
+      "expected_output": "Should follow Django/DRF patterns exactly: Model with Meta class, ModelSerializer, APIView (not ViewSet — the codebase uses APIView), pytest with django_db marker. BUT the codebase has no type hints anywhere — should NOT introduce them. Should surface the question of whether Task views should use the same APIView pattern or if this is the time to consider ViewSets (since CRUD is repetitive).",
+      "files": ["eval-3-mixed-signals/project/"]
+    }
+  ]
+}

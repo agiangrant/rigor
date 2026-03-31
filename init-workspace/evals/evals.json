@@ -1,0 +1,23 @@
+{
+  "skill_name": "init",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Initialize skills for this project.",
+      "expected_output": "Should detect TypeScript AND Go (polyglot project). Should create a new CLAUDE.md with the skill routing section. Should include ts:writer AND go:writer in the language writers table. Should NOT include py:writer or rs:writer. Should report what was created and which languages were detected.",
+      "files": ["eval-1-fresh-project/project/"]
+    },
+    {
+      "id": 2,
+      "prompt": "Set up the AI skills for this project.",
+      "expected_output": "Should detect Python. Should inject the skill routing section at the TOP of the existing CLAUDE.md, preserving all existing content below. Should include py:writer in the language writers table. Should NOT destroy or modify the existing Overview, Development, or Architecture sections.",
+      "files": ["eval-2-existing-claude-md/project/"]
+    },
+    {
+      "id": 3,
+      "prompt": "Re-initialize skills — we added some Rust to this project.",
+      "expected_output": "Should detect the existing AI-SKILLS-ROUTING marker. Should detect TypeScript (already present) AND Rust (new). Should ONLY add rs:writer to the language writers table. Should NOT regenerate the entire section. Should NOT touch the existing project content below the marker. Should report that ts:writer was already present and rs:writer was added.",
+      "files": ["eval-3-rerun-add-language/project/"]
+    }
+  ]
+}

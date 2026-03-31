@@ -1,0 +1,23 @@
+{
+  "skill_name": "tdd",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add an invitation system to this project. Users should be able to invite others by email. An invitation has a token, an expiration (24 hours), and can be accepted or can expire. Write the InvitationService and its tests.",
+      "expected_output": "Should follow existing test conventions (vitest, vi.mock, describe/it structure, __tests__/ directory). Should write tests BEFORE implementation. Should test happy paths (create invitation, accept invitation) AND failure modes (expired token, already accepted, invalid email, duplicate invite). Should include both unit tests for the service logic and mention integration test needs for the database interactions.",
+      "files": ["eval-1-feature-with-infra/project/"]
+    },
+    {
+      "id": 2,
+      "prompt": "We need to add tests to this invoice service. There are no tests at all right now. Write comprehensive tests for createInvoice, sendInvoice, and markPaid.",
+      "expected_output": "Should recognize there is no test framework installed and surface options (Vitest vs Jest vs Node test runner) with trade-offs before writing any tests. Should NOT just pick a framework and start. Once framework is decided, should test happy paths AND failure modes for all three functions (validation errors, state machine violations, missing invoices). Should address the need for integration tests against the real database for the SQL queries.",
+      "files": ["eval-2-no-test-infra/project/"]
+    },
+    {
+      "id": 3,
+      "prompt": "Our transfer service test only covers the happy path. We need better test coverage — add the missing tests.",
+      "expected_output": "Should identify all the failure modes in the code: negative amount, same account, missing accounts, frozen accounts, currency mismatch, insufficient funds. Should add tests for ALL of these. Should follow existing test conventions exactly. Should also flag that the transfer is not atomic (two separate updates with no transaction) as a potential integration test concern.",
+      "files": ["eval-3-missing-failure-tests/project/"]
+    }
+  ]
+}

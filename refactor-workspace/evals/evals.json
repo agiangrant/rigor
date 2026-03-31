@@ -1,0 +1,23 @@
+{
+  "skill_name": "refactor",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "UserManager is a god object — it handles user CRUD, authentication, and password management all in one class. We need to split it into separate services. The auth logic should be its own service. Refactor this.",
+      "expected_output": "Should analyze the full blast radius (UserManager, apiRoutes, tests). Should surface options for how to split (e.g., UserService + AuthService + PasswordService vs UserService + AuthService). Should update ALL consumers (apiRoutes.ts). Should delete or replace the original UserManager — NOT leave it alongside the new services. Should split the test file to match the new services. Should NOT leave any imports pointing to the old userManager.",
+      "files": ["eval-1-extract-service/project/"]
+    },
+    {
+      "id": 2,
+      "prompt": "Our hand-rolled cache module is causing problems — no TTL configurability, memory grows unbounded, and ConfigService is misusing it as a general-purpose store. We need to refactor the caching layer. Replace it with a proper abstraction.",
+      "expected_output": "Should identify all three consumers (ProductService, UserService, ConfigService) and note that ConfigService is misusing cache as state management. Should surface options for the new caching abstraction. Should flag the UserService cache invalidation bug during analysis. Should completely remove the old cache.ts — not leave it alongside the new implementation. Should update or rewrite all tests. Should address the ConfigService misuse (it needs its own state management, not cache).",
+      "files": ["eval-2-replace-abstraction/project/"]
+    },
+    {
+      "id": 3,
+      "prompt": "Rename utils/formatDate.ts to utils/dateFormatting.ts — the team decided on noun-based naming for util modules.",
+      "expected_output": "Should recognize this is a simple rename with limited blast radius. Should rename the file, update all imports (reportService, auditService), update the test import. Should NOT propose options or over-engineer this — it's a straightforward rename. Should still verify no references to the old path remain.",
+      "files": ["eval-3-simple-rename/project/"]
+    }
+  ]
+}

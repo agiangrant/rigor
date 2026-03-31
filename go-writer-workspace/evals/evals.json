@@ -1,0 +1,23 @@
+{
+  "skill_name": "go:writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a Task service to this project. Tasks have a title, description, status (open/in_progress/done), an assigneeId (references a user), and a projectId. Users should be able to create tasks, get by ID, list tasks by project, update, and change status. Write the service and tests.",
+      "expected_output": "Should follow ALL established patterns: sentinel errors, constructor injection with Store interface, struct types with CreateInput/UpdateInput, error wrapping with fmt.Errorf, manual mock struct in tests, standard library testing with t.Run subtests. Should NOT introduce testify, table-driven tests (if the existing tests don't use them), or any pattern not already in the codebase.",
+      "files": ["eval-1-follow-patterns/project/"]
+    },
+    {
+      "id": 2,
+      "prompt": "We need HTTP handlers for the todo service. Add a REST API with endpoints for CRUD operations on todos. The project has no HTTP layer yet — just the service and store.",
+      "expected_output": "Should recognize the project has NO established HTTP pattern and surface options before writing. Options should include: stdlib net/http with HandlerFunc, chi router, gin, echo. Should discuss JSON encoding/decoding patterns, error response format, middleware approach. Should NOT just pick chi or gin and start writing — this is a pattern decision that affects every future handler.",
+      "files": ["eval-2-new-pattern/project/"]
+    },
+    {
+      "id": 3,
+      "prompt": "Add SMS notification support to this notification system. The existing code has an EmailSender. We need an SMSSender that sends via Twilio, and a way to send notifications through multiple channels. Also need a NotificationService that decides which channels to use based on user preferences.",
+      "expected_output": "Should write idiomatic Go: SMSSender implements the existing Sender interface, use composition not inheritance, accept interfaces return structs. Should surface the pattern decision for multi-channel dispatch (send to all channels vs channel selection logic). Should NOT create a deep type hierarchy or abstract factory pattern — that's Java/TS thinking. Go composition with the existing Sender interface is the right approach.",
+      "files": ["eval-3-go-idioms/project/"]
+    }
+  ]
+}

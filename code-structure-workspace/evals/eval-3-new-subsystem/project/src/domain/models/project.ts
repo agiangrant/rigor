@@ -1,0 +1,6 @@
+export interface Project {
+  id: string;
+  name: string;
+  ownerId: string;
+  memberIds: string[];
+}

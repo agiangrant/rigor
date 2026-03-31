@@ -1,0 +1,23 @@
+{
+  "skill_name": "rs:writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a Project module to this codebase. Projects have a name, description, owner_id (references a user), and status (Active/Archived). Users can create, get by ID, list by owner, update, and archive projects. Write the module with service, repository trait, and tests.",
+      "expected_output": "Should follow ALL established patterns: thiserror error enum (as variants on AppError or a new ProjectError), async-trait repository trait with generics on the service, Box<dyn Fn> mock pattern in tests, #[tokio::test], serde derives, uuid for IDs, chrono for timestamps. Should NOT introduce mockall, a different error library, or any pattern not in the codebase.",
+      "files": ["eval-1-follow-patterns/project/"]
+    },
+    {
+      "id": 2,
+      "prompt": "We need to add HTTP handlers for the product service. Add a REST API with endpoints for CRUD operations. The project has no HTTP framework yet — just the service layer with sqlx.",
+      "expected_output": "Should recognize no HTTP framework exists and surface options: axum (most popular, tokio-native), actix-web (mature, actor model), warp (functional). Should present concrete code examples showing handler signatures and error mapping for each. Should NOT just pick axum and start writing. Should also surface the error-to-HTTP-response mapping pattern.",
+      "files": ["eval-2-new-pattern/project/"]
+    },
+    {
+      "id": 3,
+      "prompt": "Add a caching layer to the config service. Reads should check the cache first, writes should update both cache and store. The cache should have a configurable TTL. Write the caching wrapper and its tests.",
+      "expected_output": "Should surface ownership/concurrency decisions: how is the cache shared across async tasks? Options include Arc<Mutex<HashMap>>, Arc<RwLock<HashMap>>, or a dedicated concurrent map crate. Should discuss whether the CachingConfigStore wraps the inner store via generics (matching the existing pattern) or dynamic dispatch. Should consider TTL implementation (tokio::time::Instant vs chrono). Should NOT just reach for Arc<Mutex<>> without discussing alternatives.",
+      "files": ["eval-3-ownership/project/"]
+    }
+  ]
+}

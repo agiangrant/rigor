@@ -1,0 +1,23 @@
+{
+  "skill_name": "code-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review this PR that adds order creation to our e-commerce service. The OrderService creates orders, calculates totals, and applies discounts.",
+      "expected_output": "Should catch: 1) BLOCKING: Logic bug — missing 'else' means 50+ quantity gets 10% instead of 20%. 2) BLOCKING: Duplicated discount logic from PricingService — will drift. 3) SHOULD FIX: No null check on product lookup in createOrder loop. 4) SHOULD FIX: No null check in getOrderTotal. 5) SHOULD FIX: Test only asserts 'result is defined' — proves nothing. 6) SHOULD FIX: No failure mode tests. Should NOT include hollow praise or style nitpicks.",
+      "files": ["eval-1-real-problems/project/"]
+    },
+    {
+      "id": 2,
+      "prompt": "Review this token service implementation and auth middleware. The team hand-rolled HMAC token generation and verification.",
+      "expected_output": "Should catch: 1) BLOCKING: String comparison for signature verification is not timing-safe — vulnerable to timing attacks. Must use crypto.timingSafeEqual. 2) BLOCKING: Default secret 'default-secret-change-me' in production code. 3) CONSIDER: Whether hand-rolling tokens is appropriate vs using JWT library. Should NOT nitpick style on otherwise well-structured code. The tests are actually good — should not manufacture test findings where there are none.",
+      "files": ["eval-2-mostly-fine/project/"]
+    },
+    {
+      "id": 3,
+      "prompt": "Review this slug generation utility and its tests.",
+      "expected_output": "Should recognize this is clean, well-tested code. Should have minimal findings — maybe a CONSIDER about Unicode handling. Should NOT manufacture problems, suggest unnecessary abstractions, or pad the review with style preferences. A short review with few/no findings is the correct response for clean code.",
+      "files": ["eval-3-clean-code/project/"]
+    }
+  ]
+}

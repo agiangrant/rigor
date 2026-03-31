@@ -1,0 +1,32 @@
+{
+  "skill_name": "debug",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm getting a TypeError in production: `Cannot read properties of null (reading 'tier')` in getOrderSummary. The stack trace points to calculateDiscount being called with a null user tier. It's intermittent — only some orders trigger it. 12 customer support tickets this week. Can you fix this? Here's the code and bug report.",
+      "expected_output": "Should identify that the real issue is a missing user (null from findById), not just a null tier. Should recognize that three functions all share this same pattern of unvalidated db lookups. Should NOT just add `if (user === null)` checks everywhere — should propose a structural approach to handling missing entities. Should write a failing test first.",
+      "files": [
+        "eval-1-bandaid-temptation/src/orderService.ts",
+        "eval-1-bandaid-temptation/bug-report.md"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Users are getting SMS notifications even after they disabled SMS in their notification preferences. See the bug report. One user is particularly upset because they're on a limited SMS plan. Can you fix the notification service?",
+      "expected_output": "Should identify that the real problem is structural: notifySecurityAlert bypasses prefs entirely, and the copy-paste notification pattern across 5 functions is a maintenance nightmare with 3 more types coming. Should surface the design decision: should security alerts respect prefs or not? Should propose refactoring the duplicated dispatch pattern before it gets worse. Should NOT just add a prefs check to notifySecurityAlert without surfacing the broader issues.",
+      "files": [
+        "eval-2-structural-issue/src/notificationService.ts",
+        "eval-2-structural-issue/bug-report.md"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "There's a bug in our pagination helper — hasPrev returns true on page 1, which lets users navigate to page 0 (empty results). Can you fix it?",
+      "expected_output": "Should recognize this is a genuinely simple off-by-one bug (page > 0 should be page > 1). Should fix it directly without over-engineering. Should still write a regression test. Should NOT propose a refactor or surface options — this is a clear, straightforward fix.",
+      "files": [
+        "eval-3-simple-fix/src/pagination.ts",
+        "eval-3-simple-fix/bug-report.md"
+      ]
+    }
+  ]
+}

@@ -9,9 +9,9 @@
 
 ## Skill Routing
 
-When debugging, use `/debug` and follow all instructions.
-When reviewing code, use `/code-review` and follow all instructions.
-When making architecture decisions, use `/architecture-decisions` and follow all instructions.
+When debugging, use `/rigor:debug` and follow all instructions.
+When reviewing code, use `/rigor:code-review` and follow all instructions.
+When making architecture decisions, use `/rigor:architecture-decisions` and follow all instructions.
 
 ## Existing Plugins
 

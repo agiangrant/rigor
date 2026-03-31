@@ -1,0 +1,23 @@
+{
+  "skill_name": "e2e-init",
+  "evals": [
+    {
+      "id": 1,
+      "name": "multi-skill-task",
+      "prompt": "There's a bug in the booking service — users can create overlapping bookings for the same room. The conflict check only catches exact time matches, not overlapping ranges. Fix this bug and add a recurring booking feature (daily/weekly repeat). Also the booking service has no tests at all — add comprehensive tests.",
+      "expected_output": "This task should trigger: /debug (bug), /tdd (tests), /ts:writer (new code), /code-structure (possibly new files), /code-review (after). With skills: should follow debug methodology (analyze before fixing), write tests first (TDD), follow existing patterns (custom errors, class services), and surface the recurring booking as a pattern/architecture decision. Without skills: will likely jump to fixing the bug and writing code without the structured methodology."
+    },
+    {
+      "id": 2,
+      "name": "new-feature-ambiguity",
+      "prompt": "Add a notification system to the booking app. When a booking is created, the room owner should be notified. When a booking is cancelled, the booker should get a confirmation. We'll need email and eventually Slack notifications.",
+      "expected_output": "This task should trigger: /ts:writer (new code), /architecture-decisions (notification system design), /code-structure (new files/modules), /tdd (tests). With skills: should surface architecture decisions (notification dispatch pattern, channel abstraction, where this lives), surface pattern questions for the new notification module, follow TDD. Without skills: will likely just build it without surfacing design questions."
+    },
+    {
+      "id": 3,
+      "name": "refactor-and-review",
+      "prompt": "The RoomService and BookingService both access db directly. We want to introduce a repository pattern like the other services in the codebase use. Refactor both services to use repository interfaces, then review the changes.",
+      "expected_output": "This task should trigger: /refactor (restructuring), /code-structure (new files), /ts:writer (implementing repos), /tdd (updating tests), /code-review (reviewing the refactor). With skills: should follow refactor methodology (understand what exists, define target state, surface options, execute completely, update tests, verify no dead code). Without skills: will likely just do the refactor without the structured analysis."
+    }
+  ]
+}

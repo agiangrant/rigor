@@ -1,5 +1,5 @@
 ## Go
 
-When writing or modifying Go code, use `/go:writer` and follow all instructions.
+When writing or modifying Go code, use `/rigor:go-writer` and follow all instructions.
 
-All Go skills enforce `/tdd` — tests come first, always.
+All Go skills enforce `/rigor:tdd` — tests come first, always.

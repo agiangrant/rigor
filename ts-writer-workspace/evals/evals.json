@@ -1,0 +1,23 @@
+{
+  "skill_name": "ts:writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a ProjectService to this codebase. Projects have a name, description, an ownerId (references a user), and a status (active/archived). Users should be able to create, get by ID, list their projects, update, and archive a project. Write the service and its tests.",
+      "expected_output": "Should scan and follow ALL established patterns: class-based services, custom error classes (NotFoundError, ValidationError, ConflictError), input interfaces, vitest with vi.mock. Should NOT introduce new patterns — no Result types, no different error handling. The code should look like it was written by the same person who wrote UserService. Tests should follow the same structure (describe/it, mocked db, test both success and error cases). Should use /code-structure placement.",
+      "files": ["eval-1-follow-patterns/project/"]
+    },
+    {
+      "id": 2,
+      "prompt": "Add input validation to the user service. Right now create() accepts raw strings with no validation. We need to validate email format, check for empty names, enforce role values. The codebase has no validation pattern established yet.",
+      "expected_output": "Should recognize there's no validation pattern in the codebase and SURFACE OPTIONS before implementing. Options should include: Zod schemas, manual validation with type guards, io-ts, or simple conditional checks. Should present code examples for each. Should NOT just pick Zod and start writing — the pattern decision needs human input since it will be used everywhere going forward.",
+      "files": ["eval-2-new-pattern/project/"]
+    },
+    {
+      "id": 3,
+      "prompt": "Add a commenting system. Users can add comments to any resource, edit their own comments, and delete their own comments. Comments have a body, authorId, resourceId, and timestamps. Write the handler, service, schema, and tests.",
+      "expected_output": "Should follow established patterns: Zod for validation (schemas/ directory), handler functions (handlers/ directory), class-based service. Should match the UserService/userHandler pattern exactly. BUT should surface questions about what 'resource' means — is it a generic resourceId or typed per resource type? Should surface the authorization pattern question — checking comment.authorId === userId for edit/delete, but the codebase has no established authz pattern. Should NOT silently pick an authorization approach.",
+      "files": ["eval-3-mixed-signals/project/"]
+    }
+  ]
+}

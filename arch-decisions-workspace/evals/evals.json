@@ -1,0 +1,23 @@
+{
+  "skill_name": "architecture-decisions",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our checkout is slow — createOrder blocks for 2-3 seconds doing email, PDF generation, inventory updates, and warehouse notifications synchronously. We need to move these to background processing. What's the best approach?",
+      "expected_output": "Should research the existing stack (Express, pg, Redis already in use for sessions). Should present options for background job processing (Redis-based like BullMQ since Redis is already there, vs pg-based like graphile-worker since pg is already there, vs external like SQS/RabbitMQ). Should surface questions about scale, failure handling requirements, monitoring needs, deployment constraints. Should note Redis is already in the stack which favors BullMQ. Should NOT just say 'use BullMQ' without exploring alternatives.",
+      "files": ["eval-1-tech-selection/project/"]
+    },
+    {
+      "id": 2,
+      "prompt": "We're getting requests from customers for more granular permissions — some want project-level access control, others want to restrict specific actions. The current system is just admin/member roles. How should we redesign the permission system?",
+      "expected_output": "Should research the existing permission model (simple role check, org-scoped). Should present options (RBAC with custom roles, ABAC, resource-level ACLs, etc.) with concrete trade-offs. CRITICALLY should surface questions about product direction: How granular do customers actually need? Is this for enterprise only or all plans? Do they need to define custom roles or just pick from presets? Will permissions cross organization boundaries? These questions change which architecture is appropriate. Should NOT just build a full RBAC system without understanding requirements.",
+      "files": ["eval-2-data-model/project/"]
+    },
+    {
+      "id": 3,
+      "prompt": "We need to add a debug log level to our logger. Should we just add it or do we need a proper logging library?",
+      "expected_output": "Should recognize this is mostly a simple decision — adding a debug level to the existing logger is straightforward. Should note that for a simple Express API, the console wrapper may be sufficient. Should briefly mention when you'd want a library (structured logging, log levels, transports) but not over-engineer this into a full architecture review. The response should be proportional to the decision's weight.",
+      "files": ["eval-3-simple-decision/project/"]
+    }
+  ]
+}
