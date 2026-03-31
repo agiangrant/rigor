@@ -1,0 +1,20 @@
+{
+  "name": "rigor",
+  "owner": {
+    "name": "Andrew Giangrant"
+  },
+  "metadata": {
+    "description": "Engineering discipline for AI coding agents. Enforces TDD, structured debugging, strict code review, and architecture decisions.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "rigor",
+      "source": ".",
+      "description": "Rigorous process. Your decisions. Enforces TDD, structured debugging, architecture decision surfacing, strict code review, and pattern-aware code writing across TypeScript, Go, Python, and Rust.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": ["tdd", "debugging", "code-review", "architecture", "skills"]
+    }
+  ]
+}
