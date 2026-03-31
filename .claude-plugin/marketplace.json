@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "rigor",
-      "source": ".",
+      "source": "./",
       "description": "Rigorous process. Your decisions. Enforces TDD, structured debugging, architecture decision surfacing, strict code review, and pattern-aware code writing across TypeScript, Go, Python, and Rust.",
       "version": "1.0.0",
       "license": "MIT",
