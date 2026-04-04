@@ -48,6 +48,8 @@ Before writing any test, think about what actually matters for this code. This i
 - Business rule violations (insufficient funds, expired token, duplicate entry)
 - Concurrent access issues if applicable (race conditions, stale reads)
 
+**Failure modes are not optional extras.** If you write happy path tests and skip failure modes, the test suite is incomplete. Most production incidents come from unhandled failure modes, not from happy paths that stop working. Prioritize testing: what happens when the input is garbage, the dependency is down, and the business rule says no.
+
 Think about what would actually happen in production. A user sending an empty string, a network timeout, a database constraint violation — these are not hypothetical. They are the failures your tests need to prove are handled.
 
 Do NOT test:
@@ -126,7 +128,7 @@ If you catch yourself doing any of these, STOP and reassess.
 |---|---|
 | Writing implementation first, tests after | Write the failing test first. Always. |
 | Writing a test that passes immediately | Either the behavior exists or the test is wrong. Investigate. |
-| Testing only the happy path | Add failure mode tests. How does this code handle bad input, missing data, unavailable services? |
+| Testing only the happy path | Failure mode tests are mandatory, not a stretch goal. Test bad input, missing dependencies, business rule violations, and concurrent access where applicable. |
 | Mocking everything to avoid integration tests | Write integration tests for system behavior. Mocks don't catch integration bugs. |
 | Writing integration tests for pure logic | Use unit tests for isolated logic. Integration tests are for component interaction. |
 | Testing implementation details | Test observable behavior. If the test breaks when you refactor internals, the test is coupled to implementation. |

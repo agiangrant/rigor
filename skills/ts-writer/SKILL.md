@@ -66,6 +66,8 @@ Follow `/rigor:tdd`. The test comes first. This is not negotiable — it applies
 
 The test tells you what the code needs to do. The implementation makes the test pass. If you can't write a clear test for what you're about to implement, you don't understand the requirements well enough yet.
 
+Test both the happy path and the failure modes — bad input, missing dependencies, business rule violations. Coverage percentage is not the goal; testing what matters is.
+
 ### 5. Implementation Standards
 
 When writing the actual TypeScript:

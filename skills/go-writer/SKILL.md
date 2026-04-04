@@ -65,6 +65,8 @@ Do NOT write implementation code until pattern decisions are confirmed.
 
 Follow `/rigor:tdd`. The test comes first.
 
+Test both the happy path and the failure modes — invalid input, error returns from dependencies, edge cases in business logic. Go's explicit error handling makes failure mode testing natural; use it.
+
 Go's testing conventions are specific:
 - Tests live in `_test.go` files in the same package (or `_test` package for black-box tests)
 - Table-driven tests are the standard pattern for multiple cases

@@ -68,6 +68,8 @@ Do NOT write implementation code until pattern decisions are confirmed.
 
 Follow `/rigor:tdd`. The test comes first.
 
+Test both the happy path and the failure modes — bad input, raised exceptions from dependencies, business rule violations. Aim for confidence that the system handles real-world failures, not coverage numbers.
+
 Python testing conventions are project-specific:
 - pytest is dominant but some projects use unittest — match what exists
 - Test file naming: `test_*.py` or `*_test.py` — match what exists

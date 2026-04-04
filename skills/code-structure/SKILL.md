@@ -94,4 +94,4 @@ If you catch yourself doing any of these, STOP and go back to step 2.
 
 ## Composability
 
-This skill is a base layer. Language-specific writer skills (`/ts:writer`, `/go:writer`, etc.) and organizer skills (`/ts:organizer`, etc.) should invoke this skill's steps when creating new files. The writer handles *what* goes in the file. This skill handles *where* it goes.
+This skill is a base layer. Language-specific writer skills (`/rigor:ts-writer`, `/rigor:go-writer`, `/rigor:py-writer`, `/rigor:rs-writer`) should invoke this skill's steps when creating new files. The writer handles *what* goes in the file. This skill handles *where* it goes.

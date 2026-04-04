@@ -70,6 +70,8 @@ Do NOT write implementation code until pattern decisions are confirmed.
 
 Follow `/rigor:tdd`. The test comes first.
 
+Test both the happy path and the failure modes — invalid input, error variants from dependencies, business rule violations. Rust's Result types make failure paths explicit; test every variant that can realistically occur.
+
 Rust testing conventions:
 - Unit tests in `#[cfg(test)] mod tests` at the bottom of the source file
 - Integration tests in `tests/` directory at the crate root

@@ -53,6 +53,7 @@ Are the tests adequate? Not "do tests exist" — are they actually protecting ag
 - **Integration coverage**: If the code interacts with external systems (database, APIs, file system), are there integration tests that verify the interaction works? Mocked unit tests don't catch query errors, serialization mismatches, or constraint violations.
 - **Test quality**: Do the tests actually assert meaningful things? A test that calls a function and asserts `expect(result).toBeDefined()` proves nothing. Tests should assert specific behavior and specific values.
 - **Missing tests**: If there are code paths without test coverage, flag them explicitly. "This error path on line 47 is not tested" is actionable. "Needs more tests" is not.
+- **TDD compliance**: Were tests written before implementation? Look for signs of after-the-fact testing: tests that only verify the implementation works rather than specifying behavior, test names that describe code structure rather than scenarios, and tests that mirror implementation details rather than observable behavior. If the code was clearly not developed test-first, flag it.
 
 ### 5. Code Quality
 

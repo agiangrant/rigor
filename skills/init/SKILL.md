@@ -19,10 +19,10 @@ Scan the project root for language indicators:
 
 | Indicator | Language | Writer Skill |
 |---|---|---|
-| `package.json`, `tsconfig.json`, `*.ts`, `*.tsx` | TypeScript | `/ts:writer` |
-| `go.mod`, `*.go` | Go | `/go:writer` |
-| `pyproject.toml`, `requirements.txt`, `setup.py`, `*.py` | Python | `/py:writer` |
-| `Cargo.toml`, `*.rs` | Rust | `/rs:writer` |
+| `package.json`, `tsconfig.json`, `*.ts`, `*.tsx` | TypeScript | `/rigor:ts-writer` |
+| `go.mod`, `*.go` | Go | `/rigor:go-writer` |
+| `pyproject.toml`, `requirements.txt`, `setup.py`, `*.py` | Python | `/rigor:py-writer` |
+| `Cargo.toml`, `*.rs` | Rust | `/rigor:rs-writer` |
 
 Check for multiple languages — many projects are polyglot. Collect all detected languages.
 
@@ -89,8 +89,8 @@ The `{LANGUAGE_WRITERS_TABLE}` placeholder gets replaced with a table based on d
 ```markdown
 | Trigger | Skill | When |
 |---|---|---|
-| Writing or modifying TypeScript | `/ts:writer` | For ALL TypeScript implementation work. Follow existing patterns or surface new ones. |
-| Writing or modifying Go | `/go:writer` | For ALL Go implementation work. Follow existing patterns or surface new ones. |
+| Writing or modifying TypeScript | `/rigor:ts-writer` | For ALL TypeScript implementation work. Follow existing patterns or surface new ones. |
+| Writing or modifying Go | `/rigor:go-writer` | For ALL Go implementation work. Follow existing patterns or surface new ones. |
 ```
 
 Only include rows for languages actually detected in the project. If no languages are detected, include all four with a note that the project should be scanned once source files exist.
