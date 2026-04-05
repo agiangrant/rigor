@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "Engineering discipline for AI coding agents. Enforces TDD, structured debugging, strict code review, and architecture decisions.",
-    "version": "1.0.1"
+    "version": "1.0.2"
   },
   "plugins": [
     {
       "name": "rigor",
       "source": "./",
       "description": "Rigorous process. Your decisions. Enforces TDD, structured debugging, architecture decision surfacing, strict code review, and pattern-aware code writing across TypeScript, Go, Python, and Rust.",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "license": "MIT",
       "keywords": ["tdd", "debugging", "code-review", "architecture", "skills"]
     }

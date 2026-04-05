@@ -1,7 +1,7 @@
 {
   "name": "rigor",
   "description": "Rigorous process. Your decisions. Enforces TDD, structured debugging, architecture decision surfacing, strict code review, and pattern-aware code writing across TypeScript, Go, Python, and Rust.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "Andrew Giangrant"
   },
